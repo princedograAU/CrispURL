@@ -1,0 +1,14 @@
+.idea
+.env
+*.pyc
+.coverage
+.coverage.*
+.DS_Store
+coverage.xml
+htmlcov/
+venv/
+lib/
+test-results/
+
+.python-version
+deploy_key
