@@ -16,14 +16,9 @@ def get_env_variable(var_name):
         raise ImproperlyConfigured(f"environment variable {var_name} not found")
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_env_variable('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -113,12 +108,6 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': ('rest_framework.renderers.JSONRenderer',),
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
     'SEARCH_PARAM': 'query',
-    # 'DEFAULT_THROTTLE_CLASSES': [
-    #     'rest_framework.throttling.ScopedRateThrottle',
-    # ],
-    # 'DEFAULT_THROTTLE_RATES': {
-    #     'connects': '10/minute',
-    # }
 }
 
 
