@@ -37,12 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework_simplejwt',
+    'rest_framework',
     'corsheaders',
 
     # installed apps
     'commons',
-    'users',
     'url_shorter'
 ]
 
@@ -109,11 +108,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
-    # 'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',),
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.CursorPagination',
     'DEFAULT_RENDERER_CLASSES': ('rest_framework.renderers.JSONRenderer',),
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
     'SEARCH_PARAM': 'query',
+    # 'PAGE_SIZE': 10,
 }
 
 
@@ -135,4 +135,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-AUTH_USER_MODEL = 'users.User'
+
+SHORT_URL_LENGTH = int(get_env_variable('SHORT_URL_LENGTH'))
+REDIRECT_URL = get_env_variable('REDIRECT_URL')
