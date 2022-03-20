@@ -8,11 +8,13 @@ from rest_framework.views import APIView
 from commons.utils.base62 import generate_random_url
 from url_shorter.serializers import URLInputSerializer, URLResponseSerializer
 from url_shorter.models import UrlInputFields, UrlShorter
+from url_shorter.throttling import LimitUserRequests
 
 
 class URLView(APIView):
     permission_classes = (permissions.AllowAny,)
     serializer_class = URLResponseSerializer
+    throttle_classes = (LimitUserRequests,)
 
     def post(self, request):
         serializer = URLInputSerializer(data=request.data)

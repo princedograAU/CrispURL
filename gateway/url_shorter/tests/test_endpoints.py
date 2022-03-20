@@ -108,3 +108,17 @@ class TestURLShorterEndpoint(BaseEndpointTestMixin, TestCase):
 
         self.assertEqual(response.status_code, 404)
         self.assertEqual(response.data, expected_response)
+
+    def test_throttling(self):
+        expected_response = {
+            'detail': ErrorDetail(string='Request was throttled. Expected available in 60 seconds.', code='throttled')
+        }
+        for counter in range(0, 101):
+            response = self.client.post(
+                self.client_endpoint,
+                {
+                    "url": "https://www.google.com"
+                }
+            )
+        self.assertEqual(response.status_code, 429)
+        self.assertEqual(response.data, expected_response)

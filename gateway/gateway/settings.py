@@ -113,7 +113,12 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': ('rest_framework.renderers.JSONRenderer',),
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
     'SEARCH_PARAM': 'query',
-    # 'PAGE_SIZE': 10,
+    # 'DEFAULT_THROTTLE_CLASSES': [
+    #     'rest_framework.throttling.ScopedRateThrottle',
+    # ],
+    # 'DEFAULT_THROTTLE_RATES': {
+    #     'connects': '10/minute',
+    # }
 }
 
 
