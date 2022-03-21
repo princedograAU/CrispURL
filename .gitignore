@@ -1,5 +1,4 @@
 .idea
-.env
 *.pyc
 .coverage
 .coverage.*

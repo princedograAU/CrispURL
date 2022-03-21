@@ -1,15 +1,6 @@
 version: "3"
 
 services:
-  database:
-    image: postgres:13.0-alpine
-    environment:
-      - POSTGRES_DB=eyelet
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    ports:
-      - "5432:5432"
-
   gateway:
     build:
       context: .
@@ -21,10 +12,19 @@ services:
     environment:
       - SECRET_KEY=FAKESECRETKEY
       - DATABASE_ENGINE=django.db.backends.postgresql
-      - DATABASE_URL=postgres://postgres@localhost:5432/eyelet?password=postgres
+      - DATABASE_URL=postgres://postgres@localhost:5432/crisp-url?password=postgres
       - ALLOWED_HOSTS=localhost,127.0.0.1
       - CORS_ORIGIN_WHITELIST="http://test.com,https://test.com"
       - SHORT_URL_LENGTH=8
       - REDIRECT_URL=http://localhost:8000
     depends_on:
       - database
+
+  database:
+    image: postgres:14.2-alpine
+    environment:
+      - POSTGRES_DB=crisp-url
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"

@@ -14,7 +14,6 @@ RUN apk add --no-cache postgresql-client
 RUN apk add --update --no-cache --virtual .tmp-build-deps libc-dev linux-headers
 RUN apk add --no-cache postgresql-dev
 RUN apk add --no-cache musl-dev
-RUN apk add --no-cache python3-dev
 
 # setup pipenv
 RUN pip install --upgrade pip
