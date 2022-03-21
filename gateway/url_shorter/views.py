@@ -1,3 +1,5 @@
+from urllib.parse import urlparse
+
 from django.shortcuts import get_object_or_404
 
 from rest_framework.response import Response
@@ -23,8 +25,8 @@ class URLView(APIView):
         return Response(URLResponseSerializer(generate_random_url(request_params)).data, status=HTTP_201_CREATED)
 
     def get(self, *args, **kwargs):
-        if param := self.request.query_params.get('identifier'):
-            url_obj = get_object_or_404(UrlShorter, short_url_alias=param)
+        if param := self.request.query_params.get('url'):
+            url_obj = get_object_or_404(UrlShorter, short_url_alias=urlparse(param).path.strip('/'))
             url_obj.hits += 1
             url_obj.save()
             return Response(URLResponseSerializer(url_obj).data, status=HTTP_200_OK)

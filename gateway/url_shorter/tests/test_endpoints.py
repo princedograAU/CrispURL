@@ -97,14 +97,14 @@ class TestURLShorterEndpoint(BaseEndpointTestMixin, TestCase):
         expected_response = {'original_url': 'http://www.google.com', 'short_url': 'http://testserver/ABCDEFGH/',
                              'count': 2}
 
-        response = self.client.get(self.client_endpoint + "?identifier=ABCDEFGH", follow=True)
+        response = self.client.get(self.client_endpoint + "?url=http://testserver/ABCDEFGH/", follow=True)
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, expected_response)
 
     def test_retrieve_url_unsuccessful(self):
         expected_response = {'detail': ErrorDetail(string='Not found.', code='not_found')}
-        response = self.client.get(self.client_endpoint + "?identifier=ABCDEFGH", follow=True)
+        response = self.client.get(self.client_endpoint + "?url=ABCDEFGH", follow=True)
 
         self.assertEqual(response.status_code, 404)
         self.assertEqual(response.data, expected_response)
