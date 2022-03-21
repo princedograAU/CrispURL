@@ -22,5 +22,7 @@ services:
       - DATABASE_URL=postgres://postgres@localhost:5432/eyelet?password=postgres
       - ALLOWED_HOSTS=localhost,127.0.0.1
       - CORS_ORIGIN_WHITELIST="http://test.com,https://test.com"
+      - SHORT_URL_LENGTH=8
+      - REDIRECT_URL=http://localhost:8000
     depends_on:
       - database
