@@ -2,6 +2,7 @@ from rest_framework.test import APIClient
 
 
 class BaseEndpointTestMixin:
+    """"""
     ENDPOINT = None
     NOT_ALLOWED_METHODS = ('get', 'post', 'delete', 'patch', 'put')
 

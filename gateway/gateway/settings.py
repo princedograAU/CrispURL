@@ -128,5 +128,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# app settings
 SHORT_URL_LENGTH = int(get_env_variable('SHORT_URL_LENGTH'))
 REDIRECT_URL = get_env_variable('REDIRECT_URL')
