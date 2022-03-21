@@ -1,6 +1,13 @@
 # Short URLs
 url shortening service developed in django rest framework
 
+# Running application
+1. install docker and docker compose on your local machine.
+
+    Docker: https://docs.docker.com/desktop/mac/install/ <br>
+    Docker-Compose: https://docs.docker.com/compose/install/
+2. Run command `docker-compose up` to spin up both database and django server
+
 # Running backend server activating pipenv
 ## Environment setup
 1. Install any python version and pip (python package manager) on your machine 
