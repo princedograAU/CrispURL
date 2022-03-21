@@ -26,5 +26,3 @@ services:
       - POSTGRES_DB=crisp-url
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-    ports:
-      - "5432:5432"
