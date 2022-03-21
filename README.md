@@ -25,10 +25,11 @@ Run docker command as follows in the terminal:
 #### Disclaimer: This docker-compose file is built on Mac operating system v12.2.1
 
 # Endpoints
-- POST/ http://localhost:8000/short-url/ <br>
+- POST/ http://localhost:8000/short-url/ (create a new short url)<br>
     payload: {'url': "http://google.com"} <br>
     response: {'original_url': 'http://www.google.com', 'short_url': 'http://localhost/ABCDEFGH/', 'count': 1}
-- GET/ http://localhost:8000/short-url/ <br>
+- GET/ http://localhost:8000/short-url/ (get list of available urls)<br>
     response: ```[
   {'original_url': 'http://www.google.com', 'short_url': 'http://localhost/ABCDEFGH/', 'count': 1},]```
-- GET/ http://localhost:8000/short-url/?identifier <br>
+- GET/ http://localhost:8000/short-url/?url=http://testserver/ABCDEFGH/ (get single url as per query params)<br>
+    {'original_url': 'http://www.google.com', 'short_url': 'http://localhost/ABCDEFGH/', 'count': 2}
